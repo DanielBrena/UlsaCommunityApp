@@ -20,15 +20,16 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/routes.js">
+    </script>
+    <script src="js/controller/loginCtrl.js"></script>
+    <script src="js/factory/auth.js"></script>
+    <script src="js/factory/localService.js"></script>
   </head>
-  <body ng-app="starter">
-
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
+  <body ng-app="app">
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button class="button-icon ion-arrow-left-c"> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>
