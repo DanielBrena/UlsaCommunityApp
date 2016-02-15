@@ -25,6 +25,22 @@ angular.module('app.routes',[])
         templateUrl: 'templates/maestro/principal.html'
       }
     }
+  }).state('maestro.grupos',{
+    url:'/grupos',
+    views:{
+      'menuContent':{
+        templateUrl:'templates/maestro/grupos.html',
+        controller:'GrupoCtrl'
+      }
+    }
+  }).state('maestro.grupo',{
+    url:'/grupo/:id',
+    views:{
+      'menuContent':{
+        templateUrl:'templates/maestro/grupo.html',
+        controller:'EstudianteCtrl'
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/');
