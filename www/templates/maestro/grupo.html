@@ -1,14 +1,15 @@
 <ion-view view-title="Grupo">
+  <ion-nav-buttons side="right">
+      <button class="button"  ng-click="enviar()" >
+         <i class="icon ion-android-upload"></i>
+      </button>
+    </ion-nav-buttons>
   <ion-content >
     <ion-list>
-      <ion-item  ng-repeat="alumno in alumnos" class="item-remove-animate item-icon item-icon-left">
-        
-
-        </a>
-        <h2>{{alumno.name}} {{alumno.lastname}}</h2>
-        <p>{{alumno.registration_number}}</p>
-        <i class="icon ion-ios-person-outline"></i>
-
+      <ion-checkbox ng-click="guardarCambio()" ng-model="alumno.assistance" ng-repeat="alumno in alumnos">
+        <h2 class="colorh1">{{alumno.name}} {{alumno.lastname}}</h2>
+        <span class="colorp">{{alumno.registration_number}}</span>
+      </ion-checkbox>
       </ion-item>
     </ion-list>
   </ion-content>

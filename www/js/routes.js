@@ -1,21 +1,42 @@
-angular.module('app.routes',[])
-.config(function($stateProvider,$urlRouterProvider){
+angular.module('app.routes',['app.levels'])
+.config(function($stateProvider,$urlRouterProvider,AccessLevels){
 
   $stateProvider
   .state('index',{
     url:'/',
-    templateUrl:'templates/home.html'
+    templateUrl:'templates/home.html',
+    controller:function($state,CurrentUser){
+      if(CurrentUser.user()){
+        $state.go('maestro.principal');
+      }
+    },
+    data: {
+          access: AccessLevels.anon
+        }
   }).state('loginMaestro',{
     url:'/login',
     templateUrl:'templates/auth/login.html',
-    controller:'LoginCtrl'
+    controller:'LoginCtrl',
+    data: {
+          access: AccessLevels.anon
+        }
+
   });
 
   $stateProvider
     .state('maestro', {
     url: '/maestro',
     abstract: true,
-    templateUrl: 'templates/menu.html'
+    templateUrl: 'templates/menu.html',
+    data: {
+          access: AccessLevels.user
+        },
+    controller:function($scope,Auth,$state){
+        $scope.logout = function(){
+          Auth.logout();
+          $state.go('index');
+        }
+    }
   })
 
   .state('maestro.principal', {
