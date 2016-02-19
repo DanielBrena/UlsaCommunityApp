@@ -1,0 +1,31 @@
+<ion-view view-title="Configuración">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-disabled="form.$invalid"  ng-click="guardar(user)">
+      Guardar
+      <i class="icon ion-android-done"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content >
+    <form name="form">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Usuario</span>
+          <input required ng-model="user.username"  type="text" placeholder="Usuario">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Correo electronico</span>
+          <input required type="email" ng-model="user.email"  placeholder="Correo electronico">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Contraseña anterior</span>
+          <input type="password" ng-model="user.password" placeholder="Contraseña anterior">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nueva contraseña</span>
+          <input type="password" ng-model="user.passwordConfirm"  placeholder="Nueva contraseña">
+        </label>
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>

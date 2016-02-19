@@ -7,7 +7,7 @@ var app = angular.module('app', ['ionic','app.routes','app.levels'])
 app.constant('CONFIG',
   {
     "APIURL":"http://ulsacommunity.herokuapp.com/",
-//  "APIURL":"http://localhost:1337/",
+  //"APIURL":"http://localhost:1337/",
     anon: 0,
     user: 1
   }

@@ -1,57 +1,58 @@
-app.controller('EstudianteCtrl', function($scope, $stateParams,$timeout,$ionicLoading, LocalService, $ionicPopup, EstudianteService) {
+app.controller('EstudianteCtrl', function($scope, $stateParams, $timeout, $ionicLoading, LocalService, $ionicPopup, EstudianteService) {
   var id = $stateParams.id;
+  var idLocalStorage = "students_" + id;
   $scope.alumnos = [];
 
   function cargarAlumnos() {
-    EstudianteService.checarAsistencias(id).success(function(data){
+    EstudianteService.getEstudiantes(id).success(function(data) {
       console.log(data);
-      if(!data.status){
-        EstudianteService.getEstudiantes(id).success(function(data) {
-          console.log(data);
-          for (var i = 0; i < data.group.students.length; i++) {
-            var alumno = data.group.students[i];
-            alumno.assistance = true;
-            $scope.alumnos.push(alumno);
-          }
-          LocalService.set('students', JSON.stringify($scope.alumnos));
-
-        }).error(function(e) {
-
-        });
-      }else{
-        $scope.alumnos = angular.fromJson(LocalService.get('students'));
+      for (var i = 0; i < data.group.students.length; i++) {
+        var alumno = data.group.students[i];
+        alumno.assistance = true;
+        $scope.alumnos.push(alumno);
       }
-    }).error(function(e){
-      console.log(e);
-    });
+      LocalService.set(idLocalStorage, JSON.stringify($scope.alumnos));
 
-    // if (!LocalService.get('students')) {
-    //   EstudianteService.getEstudiantes(id).success(function(data) {
-    //     console.log(data);
-    //     for (var i = 0; i < data.group.students.length; i++) {
-    //       var alumno = data.group.students[i];
-    //       alumno.assistance = true;
-    //       $scope.alumnos.push(alumno);
-    //     }
-    //     LocalService.set('students', JSON.stringify($scope.alumnos));
-    //
-    //   }).error(function(e) {
-    //
-    //   });
-    // } else {
-    //   $scope.alumnos = angular.fromJson(LocalService.get('students'));
-    // }
+    }).error(function(e) {
+
+    });
   }
 
-  cargarAlumnos();
+  function getDate(){
+    var d = new Date();
+    var datestring = d.getFullYear() + "/" + (d.getMonth()+1)  + "/" +d.getDate();
+    return datestring;
+  }
+
+  function checarAsistencias(){
+    EstudianteService.checarAsistencias(id).success(function(data){
+      if(!data.status){//No ha pasado lista
+        if(!LocalService.get(idLocalStorage)){ //Si no hay datos guardados
+          cargarAlumnos();
+        }else{
+          $scope.alumnos = angular.fromJson(LocalService.get(idLocalStorage));
+        }
+      }else{//Ya se paso lista
+        if(!LocalService.get(idLocalStorage)){ //Si no hay datos guardados
+          cargarAlumnos();
+        }else{
+          $scope.alumnos = angular.fromJson(LocalService.get(idLocalStorage));
+        }
+      }
+    }).error(function(e){
+
+    });
+  }
+
+  checarAsistencias();
 
   $scope.guardarCambio = function() {
     console.log($scope.alumnos);
-    LocalService.set('students', JSON.stringify($scope.alumnos));
+    LocalService.set(idLocalStorage, JSON.stringify($scope.alumnos));
   }
 
   $scope.enviar = function() {
-    var r = $scope.confirm("Asistencia", "¿Estas seguro de enviar las Asistencias?");
+    var r = $scope.confirm("Asistencia", "¿Está seguro de enviar las Asistencias para la fecha " + getDate() + "?");
     r.then(function(res) {
       if (res) {
         $ionicLoading.show({
@@ -66,12 +67,14 @@ app.controller('EstudianteCtrl', function($scope, $stateParams,$timeout,$ionicLo
 
         $timeout(function() {
           $ionicLoading.hide();
-          EstudianteService.setAsistencia(id, LocalService.get('students')).success(function(data) {
+          EstudianteService.setAsistencia(id, LocalService.get(idLocalStorage)).success(function(data) {
             console.log(data);
             if (data.http_code == 202) {
               $scope.showAlert('Asistencia', data.errors[0].message);
+              //LocalService.unset('students');
             } else {
               $scope.showAlert('Asistencia', data.message);
+              //  LocalService.unset(idLocalStorage);
             }
 
           }).error(function(e) {

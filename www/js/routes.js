@@ -54,6 +54,14 @@ angular.module('app.routes',['app.levels'])
         controller:'GrupoCtrl'
       }
     }
+  }).state('maestro.configuracion',{
+    url:'/configuracion',
+    views:{
+      'menuContent':{
+        templateUrl:'templates/maestro/configuracion.html',
+        controller:'ConfiguracionCtrl'
+      }
+    }
   }).state('maestro.grupo',{
     url:'/grupo/:id',
     views:{

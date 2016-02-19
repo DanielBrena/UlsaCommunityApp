@@ -1,21 +1,22 @@
 <ion-view view-title="Maestro">
-    <ion-content  class="padding">
+  <ion-content>
 
-    	<form  name="form">
-    		<div class="list list-inset">
-			  <label class="item item-input">
-			    <input type="email" required ng-model="usuario.email" placeholder="Correo electronico">
-			  </label>
-			  <label class="item item-input">
-			    <input type="password" required ng-model="usuario.password" placeholder="Contraseña">
-			  </label>
-			</div>
-			<button  ng-click="login(usuario)" ng-disabled="form.$invalid" class="button button-block button-calm">
-            	Acceder
+    <form name="form">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Correo electronico</span>
+          <input required ng-model="usuario.email" type="email" placeholder="Correo electronico">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Contraseña</span>
+          <input required ng-model="usuario.password" type="password" placeholder="Contraseña">
+        </label>
+
+      </div>
+      <button ng-click="login(usuario)" ng-disabled="form.$invalid" class="button button-block button-calm">
+        Acceder
       </button>
+    </form>
 
-			</button>
-    	</form>
-
-    </ion-content>
+  </ion-content>
 </ion-view>

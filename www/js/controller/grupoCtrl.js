@@ -18,8 +18,10 @@ app.controller('GrupoCtrl', function($scope, $timeout, $ionicLoading, GrupoServi
 
     });
 
+    $timeout(function() {$ionicLoading.hide();}, 1000);
 
-    
+
+
 
   }
   cargarGrupos();
