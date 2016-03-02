@@ -1,4 +1,4 @@
-app.controller('EstudianteCtrl', function($scope, $stateParams, $timeout, $ionicLoading, LocalService, $ionicPopup, EstudianteService) {
+app.controller('EstudianteCtrl', function($scope, $stateParams,$state,$ionicActionSheet, $timeout, $ionicLoading, LocalService, $ionicPopup, EstudianteService) {
   var id = $stateParams.id;
   var idLocalStorage = "students_" + id;
   $scope.alumnos = [];
@@ -31,12 +31,23 @@ app.controller('EstudianteCtrl', function($scope, $stateParams, $timeout, $ionic
           cargarAlumnos();
         }else{
           $scope.alumnos = angular.fromJson(LocalService.get(idLocalStorage));
+          if($scope.alumnos.length == 0){
+            cargarAlumnos()
+          }else{
+            $scope.alumnos = angular.fromJson(LocalService.get(idLocalStorage));
+          }
         }
       }else{//Ya se paso lista
         if(!LocalService.get(idLocalStorage)){ //Si no hay datos guardados
           cargarAlumnos();
         }else{
           $scope.alumnos = angular.fromJson(LocalService.get(idLocalStorage));
+          if($scope.alumnos.length == 0){
+            cargarAlumnos()
+          }else{
+            $scope.alumnos = angular.fromJson(LocalService.get(idLocalStorage));
+
+          }
         }
       }
     }).error(function(e){
@@ -106,5 +117,36 @@ app.controller('EstudianteCtrl', function($scope, $stateParams, $timeout, $ionic
     });
     return confirmPopup
   };
+
+  $scope.onHold = function(estudiante){
+    console.log(estudiante);
+
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: 'Mostrar asistencias' },
+      //  { text: 'Move' }
+      ],
+    //  destructiveText: 'Delete',
+      titleText: 'Opciones del alumno',
+      cancelText: 'Cancelar',
+      cancel: function() {
+        // add cancel code..
+      },
+      buttonClicked: function(index) {
+        console.log(index);
+        detalleEstudiante(estudiante);
+        return true;
+      }
+    });
+
+  }
+
+  function detalleEstudiante(estudiante){
+    $state.go('maestro.estudiante',{grupo:id,estudiante:JSON.stringify(estudiante)});
+  }
+
+
+
+
 
 });

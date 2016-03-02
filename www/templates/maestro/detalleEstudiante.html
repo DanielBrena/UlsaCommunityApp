@@ -1,0 +1,54 @@
+<ion-view view-title="Estudiante">
+
+  <ion-content has-header="true">
+
+    <div class="list">
+
+      <a class="item item-avatar" href="#">
+        <img src="img/icon_user.png">
+        <h2>{{estudiante.name}} {{estudiante.lastname}}</h2>
+        <p>{{estudiante.gender}}</p>
+      </a>
+    </div>
+
+    <ul class="timeline" ng-repeat="asistencia in asistencias">
+        <li>
+          <div ng-class="asistencia.type == true ? 'timeline-thumb bg-color-green timeline-icon' : 'timeline-thumb bg-color-red timeline-icon'">
+            <i ng-class="asistencia.type == true ? 'ion-ios-checkmark-empty' : 'ion-ios-close-empty'"></i>
+          </div>
+          <div class="timeline-item">
+            <h4>{{asistencia.type2 | capitalize}}</h4>
+            <div ng-if="asistencia.type">
+              <p>
+                Con asistencía
+              </p>
+            </div>
+            <div ng-if="!asistencia.type">
+              <p>
+                Sin asistencía
+              </p>
+            </div>
+            <div class="timeline-stats">
+              <i class="ion-ios-calendar-outline"></i> {{asistencia.date}}
+            </div>
+          </div>
+        </li>
+
+        <!--
+        <li>
+          <div class="timeline-thumb bg-color-green timeline-icon">
+            <i class="ion-ios-checkmark-empty"></i>
+          </div>
+          <div class="timeline-item">
+            <h4>Viernes cultural</h4>
+            <p>Con asistencia</p>
+            <div class="timeline-stats">
+            <i class="ion-ios-calendar-outline"></i> 15/Enero/2016
+            </div>
+          </div>
+        </li> -->
+      </ul>
+
+
+  </ion-content>
+</ion-view>

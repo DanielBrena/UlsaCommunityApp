@@ -19,6 +19,8 @@ app.factory('Auth',  function($http, LocalService,AccessLevels,CONFIG) {
     },
     logout:function(){
 			LocalService.unset("token_teacher");
+      LocalService.removeAll();
+    
 		}
   }
 }).factory('AuthInterceptor', function($injector, $q) {

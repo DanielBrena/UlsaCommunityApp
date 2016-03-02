@@ -3,6 +3,7 @@ app.controller('ConfiguracionCtrl', function($scope, $timeout, $ionicLoading,Loc
   $scope.guardar = function(usuario){
       console.log("guardado");
       usuario.idUser = angular.fromJson(LocalService.get('token_teacher')).user.id;
+    //  usuario.param = angular.fromJson(LocalService.get('token_teacher')).user.id;
       console.log(usuario.idUser);
       CurrentUser.setInformacion(usuario).success(function(data){
         console.log(data);

@@ -8,6 +8,9 @@ app.factory('LocalService',function(){
 		},
 		unset:function(key){
 			return localStorage.removeItem(key);
+		},
+		removeAll(){
+			return localStorage.clear();
 		}
 	}
 });

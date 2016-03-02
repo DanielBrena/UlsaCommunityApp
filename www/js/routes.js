@@ -5,7 +5,8 @@ angular.module('app.routes',['app.levels'])
   .state('index',{
     url:'/',
     templateUrl:'templates/home.html',
-    controller:function($state,CurrentUser){
+    controller:function($state,CurrentUser,$state){
+      $state.go('index');
       if(CurrentUser.user()){
         $state.go('maestro.principal');
       }
@@ -68,6 +69,14 @@ angular.module('app.routes',['app.levels'])
       'menuContent':{
         templateUrl:'templates/maestro/grupo.html',
         controller:'EstudianteCtrl'
+      }
+    }
+  }).state('maestro.estudiante',{
+    url:'/grupo/:estudiante/:grupo',
+    views:{
+      'menuContent':{
+        templateUrl:'templates/maestro/detalleEstudiante.html',
+        controller:'DetalleEstudianteCtrl'
       }
     }
   });

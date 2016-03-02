@@ -1,17 +1,23 @@
 <ion-view view-title="Grupo">
   <ion-nav-buttons side="right">
-      <button class="button"  ng-click="enviar()" >
-        Enviar
-         <i class="icon ion-android-upload"></i>
-      </button>
-    </ion-nav-buttons>
+    <button class="button"  ng-click="enviar()" >
+      Enviar
+      <i class="icon ion-android-upload"></i>
+    </button>
+  </ion-nav-buttons>
   <ion-content >
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Buscar" ng-model="query">
+      </label>
+
+    </div>
     <ion-list>
-      <ion-checkbox class="checkbox-balanced" ng-click="guardarCambio()" ng-model="alumno.assistance" ng-repeat="alumno in alumnos">
+      <ion-checkbox on-hold="onHold(alumno)"  class="checkbox-balanced" ng-click="guardarCambio()" ng-model="alumno.assistance" ng-repeat="alumno in alumnos | filter:query">
         <h2 class="colorh1">{{alumno.name}} {{alumno.lastname}}</h2>
-        <span class="colorp">{{alumno.registration_number}}</span>
+        <!-- <span class="colorp">{{alumno.registration_number}}</span> -->
       </ion-checkbox>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+  </ion-list>
+</ion-content>
 </ion-view>
