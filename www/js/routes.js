@@ -63,6 +63,14 @@ angular.module('app.routes',['app.levels'])
         controller:'ConfiguracionCtrl'
       }
     }
+  }).state('maestro.editarContrasena',{
+    url:'/contrasena',
+    views:{
+      'menuContent':{
+        templateUrl:'templates/maestro/editarContrasena.html',
+        controller:'ConfiguracionCtrl'
+      }
+    }
   }).state('maestro.grupo',{
     url:'/grupo/:id',
     views:{

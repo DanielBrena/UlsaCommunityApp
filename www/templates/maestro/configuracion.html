@@ -1,31 +1,45 @@
-<ion-view view-title="Configuración">
-  <ion-nav-buttons side="right">
-    <button class="button" ng-disabled="form.$invalid"  ng-click="guardar(user)">
-      Guardar
-      <i class="icon ion-android-done"></i>
-    </button>
-  </ion-nav-buttons>
+<ion-view view-title="Opciones">
+
   <ion-content >
-    <form name="form">
-      <div class="list">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Usuario</span>
-          <input required ng-model="user.username"  type="text" placeholder="Usuario">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Correo electronico</span>
-          <input required type="email" ng-model="user.email"  placeholder="Correo electronico">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Contraseña anterior</span>
-          <input type="password" ng-model="user.password" placeholder="Contraseña anterior">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Nueva contraseña</span>
-          <input type="password" ng-model="user.passwordConfirm"  placeholder="Nueva contraseña">
-        </label>
+
+    <ion-list>
+      <ion-item class="item-divider">
+          Cuenta
+      </ion-item>
+
+      <ion-item  class="item-remove-animate item-icon item-icon-right">
+
+        Editar perfil
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item  class="item-remove-animate item-icon item-icon-right" href="#/maestro/contrasena">
+
+        Cambiar contraseña
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+
+
+    <!-- <div class="list">
+
+      <div class="item item-divider">
+        Cuenta
       </div>
-    </form>
+
+      <a class="item item-remove-animate item-icon item-icon-right" href="#">
+        <a class="item-icon-left" href="#">
+          <i class="icon ion-ios-people-outline"></i>
+        </a>
+        Editar perfil
+      </a>
+      <a class="item item-remove-animate item-icon item-icon-right" href="#">
+        <a class="item-icon-left" href="#">
+          <i class="icon ion-ios-people-outline"></i>
+        </a>
+        Cambiar contraseña
+      </a>
+
+    </div> -->
 
   </ion-content>
 </ion-view>

@@ -21,6 +21,6 @@ app.factory('CurrentUser',function(LocalService,CONFIG,$http){
 
 			});
 			return user;
-		}
+		},
 	}
 });

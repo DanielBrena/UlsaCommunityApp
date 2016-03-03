@@ -21,6 +21,15 @@ app.controller('ConfiguracionCtrl', function($scope, $timeout, $ionicLoading,Loc
     });
   }
 
+  $scope.cambiarContrasena = function(usuario){
+    console.log(usuario);
+    CurrentUser.setInformacion(usuario).success(function(data){
+      console.log(data);
+    }).error(function(e){
+      
+    });
+  }
+
   getInformacion();
 
   $scope.showAlert = function(title, msg) {
