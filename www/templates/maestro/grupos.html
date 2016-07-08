@@ -1,6 +1,10 @@
-<ion-view view-title="Grupos">
+<ion-view view-title="Grupos" cache-view="true">
   <ion-content >
-    <ion-list>
+    <ion-refresher
+      pulling-text="Dezliza para actualizar"
+      on-refresh="cargarGrupos()">
+    </ion-refresher>
+    <!-- <ion-list>
       <ion-item ng-click="accederAGrupo(grupo.id)" ng-repeat="grupo in grupos" class="item-remove-animate item-icon item-icon-right">
         <a class="item-icon-left" href="#">
           <i class="icon ion-ios-people-outline"></i>
@@ -8,6 +12,30 @@
         {{grupo.name}} - {{grupo.description}}
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+    <div class="" ng-repeat="grupo in grupos">
+      <div class="row">
+        <div class="col col-50" ng-repeat="g in grupo"  ng-click="accederAGrupo(g.id)">
+          <div class="list card card-grupos" on-hold="opciones(g)" >
+
+            <div class="item item-avatar" >
+              <ionic-letter-avatar data="{{g.name}}" width="30" fontsize="20" height="30" shape="round"></ionic-letter-avatar>
+              <h2>{{g.name}}</h2>
+              <p>{{g.description}}</p>
+            </div>
+            <div class="item item-image">
+              <img ng-if="g.image" ng-src="{{ruta}}images/grupos/{{g.image}}">
+              <img ng-if="!g.image" ng-src="{{ruta}}images/grupos/portada_grupo.png">
+            </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
   </ion-content>
 </ion-view>

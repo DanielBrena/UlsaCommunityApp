@@ -1,9 +1,52 @@
-<ion-view view-title="principal">
-  <ion-content class="padding">
+<ion-view view-title="Principal" cache-view="false">
+  <ion-content >
+
     <div class="card">
-      <div class="item item-text-wrap center">
-        Bienvenido Profesor.
+
+      <div class="item item-text-wrap center-app">
+        <p class="color-gris">
+          EXCELENTE DÍA   {{date | date:'dd'  }} DE {{date| date:'MMMM' | uppercase }}, {{teacher.gender =='mujer'?'MAESTRA':'MAESTRO'}} {{teacher.name}} {{teacher.lastname}}
+        </p>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider center-app ">
+        <p class="center-app color-gris">
+          Total de alumnos a cargo
+        </p>
+      </div>
+      <div class="item item-text-wrap center-app">
+
+        <p class="color-gris">
+          {{gender.data[0] + gender.data[1]}}
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider center-app ">
+        <p class="center-app color-gris">
+          Alumnos por genero
+        </p>
+      </div>
+      <div class="item item-text-wrap center">
+        <canvas id="pie" class="chart chart-pie"
+          chart-data="gender.data" chart-labels="gender.labels" chart-colours="gender.colores">
+        </canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider center-app ">
+        <p class="center-app color-gris">
+          Asistencias de Viernes Cultural
+        </p>
+      </div>
+      <canvas id="bar" class="chart chart-bar"
+        chart-data="data1" chart-labels="labels1" chart-series="labels1">
+    </canvas
+
     </div>
   </ion-content>
 </ion-view>

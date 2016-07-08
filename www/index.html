@@ -2,16 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"> -->
+
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/grupos.css">
+    <link rel="stylesheet" href="css/slide.css" charset="utf-8">
+    <link rel="stylesheet" href="css/angular-chart.css">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
-    -->
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -20,21 +22,48 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
+
+
+    <script src="js/Chart.js"></script>
+    <script src="js/angular-chart.js"></script>
+    <script src="http://172.20.10.9:1337/js/sails.io.js"></script>
     <script src="js/app.js"></script>
     <script src="js/routes.js"></script>
+    <script src="js/angular-locale_es-mx.js"></script>
+    <script src="js/ionic-letteravatar.js"></script>
+    <script src="js/underscore.js"></script>
+
+
+
+    <script src="js/controller/principalCtrl.js"></script>
+    <script src="js/controller/publicacionCtrl.js"></script>
     <script src="js/controller/loginCtrl.js"></script>
     <script src="js/controller/grupoCtrl.js"></script>
-    <script src="js/controller/estudianteCtrl.js"></script>
+    <script src="js/controller/detalleGrupoCtrl.js"></script>
     <script src="js/controller/configuracionCtrl.js"></script>
-    <script src="js/controller/detalleEstudianteCtrl.js"></script>
+    <script src="js/controller/estudianteCtrl.js"></script>
+    <script src="js/controller/estadisticaGrupoCtrl.js"></script>
+    <script src="js/controller/principalUCtrl.js"></script>
+    <script src="js/controller/grupoUCtrl.js"></script>
+    <script src="js/controller/detalleGrupoUCtrl.js"></script>
+
     <script src="js/factory/accessLevels.js"></script>
     <script src="js/factory/auth.js"></script>
-
     <script src="js/factory/localService.js"></script>
+    <script src="js/factory/principalService.js"></script>
     <script src="js/factory/currentUser.js"></script>
     <script src="js/factory/grupoService.js"></script>
+    <script src="js/factory/detalleGrupoService.js"></script>
     <script src="js/factory/estudianteService.js"></script>
-    <script src="js/factory/detalleService.js"></script>
+    <script src="js/factory/dataService.js"></script>
+
+    <script src="js/factory/eventosService.js"></script>
+    <script src="js/factory/suscripciones.js"></script>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/ng-cordova.js"></script>
+
   </head>
   <body ng-app="app">
     <ion-nav-bar class="bar-positive">

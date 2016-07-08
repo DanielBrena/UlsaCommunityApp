@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.brena.ulsacommunity" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.danielbrena.ulsacommunity" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>UlsaCommunity</name>
   <description>
         Proyecto de UlsaCommunity
@@ -17,6 +17,8 @@
   <preference name="Orientation" value="portrait"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="AllowInlineMediaPlayback" value="true"/>
+  <preference name="MediaPlaybackRequiresUserAction" value="false"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
@@ -39,6 +41,7 @@
     <icon src="resources/ios/icon/icon-small@3x.png" width="87" height="87"/>
     <splash src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" height="1136"/>
     <splash src="resources/ios/splash/Default-667h.png" width="750" height="1334"/>
+    <splash src="resources/ios/splash/Default-736h.png" width="1242" height="2208"/>
     <splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
     <splash src="resources/ios/splash/Default-Portrait~ipad.png" width="768" height="1024"/>
     <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>

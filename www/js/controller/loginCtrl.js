@@ -1,4 +1,4 @@
-app.controller('LoginCtrl',function($scope,Auth,$ionicPopup,$state,$ionicLoading){
+app.controller('LoginCtrl',function($scope,Auth,$ionicPopup,$state,$ionicLoading,CurrentUser){
   $scope.login = function(usuario){
 
     $ionicLoading.show({
@@ -10,9 +10,13 @@ app.controller('LoginCtrl',function($scope,Auth,$ionicPopup,$state,$ionicLoading
     });
 
     Auth.login(usuario).success(function(data){
-      console.log(data);
+      console.log(CurrentUser.user());
       $ionicLoading.hide();
-      $state.go("maestro.principal");
+      if(CurrentUser.user().user.access_level == 0){
+        $state.go("alumno.principal");
+      }else{
+        $state.go("maestro.principal");
+      }
     }).error(function(e){
       console.log(e);
       $ionicLoading.hide();
@@ -32,5 +36,7 @@ app.controller('LoginCtrl',function($scope,Auth,$ionicPopup,$state,$ionicLoading
 	     console.log('Open alert');
 	   });
 	 };
+
+
 
 });

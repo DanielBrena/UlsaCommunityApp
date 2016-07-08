@@ -1,0 +1,188 @@
+<ion-view  cache-view="false" >
+  <ion-nav-bar class="bar-clear">
+    <ion-nav-back-button class="button-clear">
+    <i class="ion-arrow-left-c"></i>
+  </ion-nav-back-button>
+  </ion-nav-bar>
+
+  <div class="header-perfil">
+    <img ng-if="grupo.image" ng-src="{{ruta}}images/grupos/{{grupo.image}}" style="width:100%;height:243px">
+    <img ng-if="!grupo.image" ng-src="{{ruta}}images/grupos/portada_grupo.png" style="width:100%;height:243px">
+  </div>
+
+
+
+  <ion-content  >
+    <ion-refresher
+      pulling-text="Desliza para actualizar..."
+      on-refresh="getGrupo()">
+    </ion-refresher>
+
+    <div class="row" scroll="false" >
+      <ion-slide-box on-slide-changed="slideHasChanged($index)" class="slide-perfil" style="text-align:center">
+        <ion-slide>
+          <div class="box" style="color:white">
+
+            <h1>{{grupo.name}}</h1>
+            <p>
+              {{grupo.description}}
+            </p>
+
+            <button  class="button icon button-small  button-outline button-light">
+              <i class="icon ion-gear-a"></i>
+            </button>
+
+          </div>
+
+        </ion-slide>
+        <ion-slide>
+          <div class="box" style="color:white"><h4 style="color:white">
+            {{grupo.events[0].title}}
+          </h4>
+          <p>
+            {{grupo.events[0].description}}
+          </p>
+
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+
+    <div class="row img-perfil">
+      <div class="" style="background:#4E92DF;color:white;height:60px;width:60px;border:2px solid white;border-radius:100%;text-align:center;padding-top:20px;padding-bottom:20px;fontsize:25px">
+        {{grupo.name.substring(0,1)}}
+      </div>
+      <!-- <ionic-letter-avatar data="{{grupo.name}}" width="60" fontsize="20" height="60" shape="round"></ionic-letter-avatar> -->
+    </div>
+    <div class="row img-perfil">
+      <div class="col">
+        <h6>MAESTRO: <span style="color:gray">{{grupo.teacher.name}} {{grupo.teacher.lastname}}</span> </h6>
+      </div>
+      <div class="col ">
+        <h6>{{grupo.students.length}} <span style="color:gray">{{grupo.students.length == 1 ? 'ALUMNO INSCRITO':'ALUMNOS INSCRITOS'}}</span></h6>
+      </div>
+
+    </div>
+    <div class="row img-perfil" ng-show="alumno">
+      <div class="col table-info">
+        <h5>Asistencias</h5>
+        <h6>
+          {{asistenciasCount.true.length ? asistenciasCount.true.length : 0 }}
+        </h6>
+      </div>
+
+      <div class="col table-info">
+        <h5>Inasistencias</h5>
+
+        <h6>
+          {{asistenciasCount.false.length ? asistenciasCount.false.length : 0 }}
+        </h6>
+      </div>
+      <div class="col table-info">
+        <h5>
+          Calificación
+        </h5>
+        <h6>
+          {{asistenciasCount.calificacion.qualification}}
+        </h6>
+      </div>
+
+    </div>
+    <div class="row img-perfil" ng-hide="alumno">
+      <div class="row row-bottom">
+        <div class="button-bar">
+          <a  class="button  button-small button-outline activated button-calm">Pubicaciones</a>
+          <!-- <a    class="button button-small button-outline button-calm">Multimedia</a> -->
+        </div>
+      </div>
+
+
+    </div>
+    <hr class="divider">
+    <div class="calificaciones" ng-show="alumno">
+      <ul class="timeline" ng-repeat="asistencia in asistencias">
+          <li>
+            <div ng-class="asistencia.type == true ? 'timeline-thumb bg-color-green timeline-icon' : 'timeline-thumb bg-color-red timeline-icon'">
+              <i ng-class="asistencia.type == true ? 'ion-ios-checkmark-empty' : 'ion-ios-close-empty'"></i>
+            </div>
+            <div class="timeline-item">
+              <h4>{{asistencia.type2 | capitalize}}</h4>
+              <div ng-if="asistencia.type">
+                <p>
+                  Con asistencía
+                </p>
+              </div>
+              <div ng-if="!asistencia.type">
+                <p>
+                  Sin asistencía
+                </p>
+              </div>
+              <div class="timeline-stats">
+                <i class="ion-ios-calendar-outline"></i> {{asistencia.date | date}}
+              </div>
+            </div>
+          </li>
+        </ul>
+    </div>
+    <div class="noticias" ng-hide="alumno">
+      <div class="" ng-repeat="evento in grupo.events">
+        <div class="row" >
+          <div class="col">
+            <div class="list card" ng-show="evento.type == 'aviso'">
+
+              <div class="item item-avatar">
+                <ionic-letter-avatar  data="{{grupo.teacher.name}}" width="30" fontsize="20" height="30" shape="round"></ionic-letter-avatar>
+
+                <h2>{{evento.title}}</h2>
+                <p>{{evento.dateStart | date:'MMMM dd, yyyy'}}</p>
+              </div>
+
+              <div class="item item-body">
+                <div ng-show="evento.file && evento.file != 'null'" class="item item-image">
+                  <img ng-if="evento.file != 'null'" class="full-image"ng-src="{{ruta}}images/eventos/{{evento.file}}">
+                </div>
+
+                <p>
+                  {{evento.description}}
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="card" ng-show="evento.type == 'evento'">
+              <div class="item item-divider">
+                  {{evento.title}}
+              </div>
+              <div ng-show="evento.file" class="item item-image">
+                <img ng-if="evento.file !='null'" style="width:100%" ng-src="{{ruta}}images/eventos/{{evento.file}}">
+              </div>
+              <div class="item item-text-wrap">
+                  {{ evento.description }}
+                  <p/>
+                  <strong>Fecha: {{evento.dateStart | date:'dd-MMMM-yyyy HH:mm:ss'}}</strong>
+              </div>
+
+              <div class="item item-text-wrap" ng-if="evento.type=='evento'">
+                <p ng-if="evento.status">¡Este evento ya se agrego a tu calendario!</p>
+
+                <button ng-if="!evento.status"ng-click="agregarEvento(evento)" class="button button-block button-outline button-positive">
+                  Agregar al calendario
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+  </ion-content>
+
+</ion-view>

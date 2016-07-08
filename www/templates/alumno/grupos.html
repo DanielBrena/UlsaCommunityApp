@@ -1,0 +1,66 @@
+<ion-view view-title="Grupos" >
+
+  <ion-content  >
+    <ion-refresher
+      pulling-text="Desliza para actualizar..."
+      on-refresh="obtenerGrupos()">
+    </ion-refresher>
+
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Buscar" ng-model="query">
+      </label>
+
+    </div>
+
+    <div class="row" >
+
+      <ion-scroll zooming="false" direction="x" style="width:100%" >
+        <h6 style="color:gray">Tus grupos</h6>
+        <div ng-repeat="g in gruposAlumno" ng-click="grupoEstudiante(g)"  style='display: inline-block; margin: 10px;'>
+          <div class="" style="text-align:center;">
+            <ionic-letter-avatar data="{{g.name}}" shape="round"></ionic-letter-avatar>
+            <h6 style="color:gray">{{g.name}}</h6>
+          </div>
+        </div>
+
+      </ion-scroll>
+    </div>
+    <hr class="divider">
+    <h6 style="color:gray;padding-left:5px;">Grupos actuales del semestre</h6>
+    <div class="" ng-repeat="grupo in gruposActivos" style="text-align:center;">
+
+      <div class="row">
+        <div class="col col-50" ng-repeat="g in grupo| filter:query" >
+          <div class="list card card-grupos">
+
+            <div class="item item-avatar" ng-click="grupoInformacion(g)" >
+              <ionic-letter-avatar data="{{g.name}}" width="30" fontsize="20" height="30" shape="round"></ionic-letter-avatar>
+              <h2>{{g.name}}</h2>
+              <p>{{g.description}}</p>
+            </div>
+
+            <div class="item item-image">
+              <img ng-if="g.image" ng-src="{{ruta}}images/grupos/{{g.image}}">
+              <img ng-if="!g.image" ng-src="{{ruta}}images/grupos/portada_grupo.png">
+            </div>
+
+            <a class="item " href="#" ng-if="g.status">
+              <button  ng-if="!g.inscription" ng-click="inscripcion(g)" class="button  button-outline button-positive">
+                Inscribirse
+              </button>
+              <button  ng-if="g.inscription" ng-click="baja(g)" class="button  button-assertive">
+                Darme de baja
+              </button>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </ion-content>
+
+</ion-view>

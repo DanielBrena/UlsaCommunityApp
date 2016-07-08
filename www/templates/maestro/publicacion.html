@@ -1,0 +1,39 @@
+<ion-view view-title="Publicaciones" cache-view="false" >
+  <ion-nav-buttons side="right">
+    <button class="button"  ng-click="getEventos()" >
+      {{nuevosEventos.length}}
+      <i ng-show="nuevosEventos.length > 0" class="icon ion-ios-bell"></i>
+
+      <i ng-show="nuevosEventos.length == 0" class="icon ion-ios-bell-outline"></i>
+    </button>
+  </ion-nav-buttons>
+<ion-content padding>
+  <ion-refresher
+    pulling-text="{{nuevoEventos.length > 0 ? 'Desliza para actualizar, (nuevoEventos.length) Nuevos ...' : 'Desliza para actualizar...'}} "
+    on-refresh="getEventos()">
+  </ion-refresher>
+  <div class="card" ng-repeat="e in eventos" ng-show="e.diffusion =='todos' || e.diffusion == 'maestros'">
+                    <div class="item item-divider">
+                        {{e.title}}
+                    </div>
+                    <div ng-show="e.file" class="item item-image">
+                      <img ng-if="e.file !='null'" style="width:100%" ng-src="{{rutaImagen}}images/eventos/{{e.file}}">
+                    </div>
+                    <div class="item item-text-wrap">
+                        {{ e.description }}
+                        <p/>
+                        <strong>Fecha: {{e.dateStart | date:'dd-MMMM-yyyy HH:mm:ss'}}</strong>
+                    </div>
+
+                    <div class="item item-text-wrap" ng-if="e.type=='evento'">
+                      <p ng-if="e.status">¡Este evento ya se agrego a tu calendario!</p>
+
+                      <button ng-if="!e.status"ng-click="agregarEvento(e)" class="button button-block button-outline button-positive">
+                        Agregar al calendario
+                      </button>
+                    </div>
+
+                </div>
+</ion-content>
+
+</ion-view>

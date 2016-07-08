@@ -1,0 +1,69 @@
+<ion-view ng-form="form" view-title="Alumno">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-disabled="form.$invalid"  ng-click="actualizarAlumno(persona)">
+      Listo
+    </button>
+  </ion-nav-buttons>
+  <ion-content >
+    <div>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Matricula</span>
+          <input required ng-model="persona.registration_number"  type="text" placeholder="Matricula">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nombre</span>
+          <input required ng-model="persona.name"  type="text" placeholder="Nombre">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Apellidos</span>
+          <input required ng-model="persona.lastname"  type="text" placeholder="Apellidos">
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Genero
+          </div>
+          <select ng-model="persona.gender">
+            <option value="hombre" selected>Hombre</option>
+            <option value="mujer" >Mujer</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Semestre
+          </div>
+
+          <select ng-model="persona.semester">
+            <option value="1" selected>Primer semestre</option>
+            <option value="2" >Segundo semestre</option>
+            <option value="3" >Tercer semestre</option>
+            <option value="4" >Cuarto semestre</option>
+            <option value="5" >Quinto semestre</option>
+            <option value="6" >Sexto semestre</option>
+            <option value="7" >Septimo semestre</option>
+            <option value="8" >Octavo semestre</option>
+            <option value="9" >Noveno semestre</option>
+            <option value="10" >Decimo semestre</option>
+
+          </select>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Carrera
+          </div>
+          <select ng-model="persona.career" ng-options="carrera.id as carrera.name for carrera in carreras">
+
+          </select>
+        </label>
+
+
+      </div>
+    </div >
+
+  </ion-content>
+</ion-view>

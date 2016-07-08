@@ -1,25 +1,59 @@
-Ionic App Base
+ULSACOMMUNITY APP
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
+ULSACOMMUNITY APP es una aplicación móvil con el framework IONIC.
+Su desarrollo fue para la Universidad La Salle Oaxaca para la área de FIBU.
 
-## Using this project
+## Caracteristicas
+- Visualización de eventos.
+- Visualización de noticias.
+- Visualización de grupos.
+- Visualización de calificaciones.
+- Visualización de asistencias.
+- Notificaciones de eventos.
+- Configuración de perfil.
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+## Requerimientos
+- Nodejs
+- Ionic
+- Android Studio (OSx, Linux, Windows)
+- XCode (Mac)
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
 
+## Instalación
+
+
+###### Instalar NodeJS.
+###### Instalar Ionic a traves de npm.
+
+Para correr la aplicación se necesita correr ULSACOMMUNITY SERVER y agregar la url
+dentro del aplicativo del servidor.
+
+```javascript
+io.sails.url = "http://localhost:1337";
+io.sails.useCORSRouteToGetCookie = false;
+app.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});
+app.constant('CONFIG',
+  {
+  "APIURL":"http://localhost:1337/",
+    anon: 0,
+    user: 1
+  }
+)
+```
+## Compilar
+###### iOS
 ```bash
-$ npm install -g ionic
+ionic platform add ios
+ionic build ios
 ```
 
-Then run:
-
+###### Android
 ```bash
-$ ionic start myProject tabs
+ionic platform add android
+ionic build android
 ```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.

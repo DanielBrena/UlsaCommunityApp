@@ -1,0 +1,19 @@
+.grupo-btn-opciones{
+  text-align: right;
+}
+.grupo-imagen{
+  text-align: center;
+}
+.grupo-nombre{
+  text-align: center;
+  color: #5F5F5F;
+}
+.grupo-fecha{
+  text-align: center;
+  color: #808080;
+}
+
+.grupos-estudiantes{
+  font-size: .6em !important;
+  text-align: center;
+}

@@ -1,0 +1,62 @@
+<ion-view view-title="" >
+  <ion-nav-bar class="bar-clear">
+  </ion-nav-bar>
+  <ion-content padding="true" scroll="false">
+
+    <video autoplay loop   id="bgvid" muted webkit-playsinline requestFullScreen>
+
+      <source src="video/login.mp4" type="video/mp4">
+      </video>
+
+    <div class="row row-top">
+      <div class="col">
+        <div class="logo">
+          <img width="300" src="img/logo_2.png">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row row-center">
+      <div class="col">
+        <form class="" name="form" >
+          <div class="list list-inset" style="background:rgba(0,0,0,0.1);" >
+            <label class="item item-input" style="background:rgba(0,0,0,0.1);" >
+              <input type="text" class="" ng-model="usuario.email"  placeholder="Correo electronico" style="color:white">
+            </label>
+            <label class="item item-input" style="background:rgba(0,0,0,0.1);" >
+              <input type="password"ng-model="usuario.password"  placeholder="Contraseña" style="color:white">
+            </label>
+
+
+          </div>
+          <button ng-click="login(usuario)" ng-disabled="form.$invalid" class="button button-outline button-block button-positive">
+            Acceder
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+
+    <div class="row row-bottom" >
+
+      <button ui-sref="register" class="button button-outline button-block button-assertive">
+        Crear cuenta
+      </button>
+    </div>
+
+    <div class="row row-bottom" >
+
+      <button ui-sref="index" class="button button-outline button-block button-light">
+        Cancelar
+    </button>
+
+
+
+    </div>
+
+
+
+  </ion-content>
+</ion-view>

@@ -7,14 +7,20 @@
           Cuenta
       </ion-item>
 
-      <ion-item  class="item-remove-animate item-icon item-icon-right">
+      <ion-item  class="item-remove-animate item-icon item-icon-right"  href="{{currentUser.user.access_level == 0 ?'#/alumno/alumno':'#/maestro/maestro'}}">
 
         Editar perfil
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
-      <ion-item  class="item-remove-animate item-icon item-icon-right" href="#/maestro/contrasena">
+      <ion-item  class="item-remove-animate item-icon item-icon-right" href="{{currentUser.user.access_level == 0 ?'#/alumno/cuenta':'#/maestro/cuenta'}}">
 
-        Cambiar contraseña
+        Editar cuenta
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+      <ion-item  class="item-remove-animate item-icon item-icon-right"  ng-click="logout()">
+
+        Cerrar sesión
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>

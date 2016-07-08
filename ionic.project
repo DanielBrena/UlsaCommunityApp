@@ -1,4 +1,12 @@
 {
   "name": "UlsaCommunity",
-  "app_id": "a2a306ec"
+  "app_id": "a2a306ec",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

@@ -1,14 +1,49 @@
 <ion-view view-title="Estudiante">
 
-  <ion-content has-header="true">
+  <ion-content class='has-header'>
 
-    <div class="list">
 
-      <a class="item item-avatar" href="#">
-        <img src="img/icon_user.png">
-        <h2>{{estudiante.name}} {{estudiante.lastname}}</h2>
-        <p>{{estudiante.gender}}</p>
-      </a>
+    <div class="row" style="text-align:center">
+      <div class="col">
+        <ionic-letter-avatar data="{{estudiante.name}}" width="50" fontsize="20" height="50" shape="round"></ionic-letter-avatar>
+      </div>
+    </div>
+    <div class="row" style="text-align:center">
+      <div class="col">
+        {{estudiante.name}} {{estudiante.lastname}}
+      </div>
+    </div>
+    <div class="row" style="text-align:center">
+      <div class="col">
+        {{estudiante.gender}}
+      </div>
+    </div>
+
+
+    <div class="row " >
+      <div class="col table-info">
+        <h5>Asistencias</h5>
+        <h6>
+          {{asistenciasCount.true.length ? asistenciasCount.true.length : 0 }}
+        </h6>
+      </div>
+
+      <div class="col table-info">
+        <h5>Inasistencias</h5>
+
+        <h6>
+          {{asistenciasCount.false.length ? asistenciasCount.false.length : 0 }}
+        </h6>
+      </div>
+      <div class="col table-info">
+        <h5>
+          Calificación
+        </h5>
+        <h6>
+          {{asistenciasCount.calificacion.qualification}}
+        </h6>
+      </div>
+
     </div>
 
     <ul class="timeline" ng-repeat="asistencia in asistencias">
@@ -29,7 +64,7 @@
               </p>
             </div>
             <div class="timeline-stats">
-              <i class="ion-ios-calendar-outline"></i> {{asistencia.date}}
+              <i class="ion-ios-calendar-outline"></i> {{asistencia.date | date}}
             </div>
           </div>
         </li>

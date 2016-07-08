@@ -7,3 +7,114 @@
   text-decoration:none;
 
 }
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+  transition: 1s opacity;
+}
+.uc-bottom{
+  position: absolute;
+  bottom: 30px;
+}
+.scroll{
+  /*height: 100%;*/
+}
+#background-blur {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: 100%;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+  transition: 1s opacity;
+-webkit-filter: blur(10px);
+}
+/*Login*/
+
+@-webkit-keyframes color-change-background{
+  0% { background-color: #FF1744; }
+  10% { background-color: #F50057; }
+  20% { background-color: #D500F9; }
+  30% { background-color: #651FFF; }
+  40% { background-color: #3D5AFE; }
+  50% { background-color: #2979FF; }
+  60% { background-color: #00B0FF; }
+  70% { background-color: #00E5FF; }
+  85% { background-color: #1DE9B6; }
+  80% { background-color: #00E676; }
+  85% { background-color: #76FF03; }
+  90% { background-color: #C6FF00; }
+  95% { background-color: #FFEA00; }
+  100% { background-color: #FF9100; }
+}
+
+.background-1{
+  background-color: #55acee !important;
+}
+.background-2{
+  background: #FFFFFF;
+}
+.background-3{
+  background: #387ef5;
+}
+.background-4{
+  background-color: #387ef5;
+}
+.color-blanco{
+  color: #FFFFFF;
+}
+.color-positive{
+  color: #55acee !important;
+}
+.color-gris{
+  color:#66757f !important;
+}
+
+.center-app{
+  text-align: center;
+}
+.card-asistencia{
+  height: 100% !important;
+  width: 100% !important;
+}
+
+#barasistencia{
+  width: 100% !important;
+  height: 400px !important;
+}
+
+hr.divider{
+  border-top: 1px solid white;
+}
+
+.card-grupos{
+  margin: 0px !important;
+}
+
+.img-perfil{
+  position: relative;
+    top: -35px;
+}
+
+
+.table-info{
+  text-align: center;
+}
+.table-info > h5{
+  color: #565656 ;
+}
+.table-info h6{
+  color: gray;
+}

@@ -1,9 +1,91 @@
-<ion-view view-title="UlsaCommunity">
-    <ion-content  class="padding">
+<!-- <ion-view view-title="UlsaCommunity">
+<ion-content  class="padding">
 
-        <button  ui-sref="loginMaestro" class="button button-block button-stable">
-            Maestro
-        </button>
+<button  ui-sref="loginMaestro" class="button button-block button-stable">
+Maestro
+</button>
 
+</ion-content>
+</ion-view> -->
+<ion-view title="">
+  <ion-nav-bar class="bar-clear">
+  </ion-nav-bar>
+  <ion-content class="page-background" padding="false" scroll="false">
+
+    <video autoplay loop  id="bgvid" muted webkit-playsinline requestFullScreen>
+
+      <source src="video/background_uc.mp4" type="video/mp4">
+      </video>
+
+
+      <div class="row row-top">
+        <div class="logoPrincipal">
+           <img width="300" src="img/logo_2.png">
+         </div>
+      </div>
+
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+
+
+          <div class="row row-bottom uc-bottom">
+
+            <div class="col">
+              <p>
+                <h3><b>Hola</b></h3>
+              </p>
+              <p>
+                ¡ Bienvenido a <b>ULSACOMMUNITY !</b>
+              </p>
+
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide>
+
+          <div class="row row-bottom uc-bottom">
+            <div class="col">
+              <p>
+                <h3><b>Visualiza</b></h3>
+              </p>
+              <p>
+                <b>Explora los grupos donde estas inscrito.</b>
+              </p>
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="row row-bottom uc-bottom">
+            <div class="col">
+              <p>
+                <h3><b>Verifica</b></h3>
+              </p>
+              <p>
+                  <b>Accede a tus asistencias en clases y Viernes Culturales en cualquier momento.</b>
+              </p>
+            </div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="row row-bottom uc-bottom">
+            <div class="col">
+              <p>
+                <h3><b>Infórmate</b></h3>
+              </p>
+              <p>
+                <b>Visualiza el total de tus créditos culturales, deportivos y solidarios.</b>
+              </p>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+
+      <div class="row row-bottom" style="position:absolute;bottom:5px">
+        <div class="button-bar">
+          <a  ui-sref="loginAlumno"  class="button button-positive">Alumnos</a>
+          <a  ui-sref="login"  class="button button-assertive ">Maestros</a>
+        </div>
+      </div>
     </ion-content>
 </ion-view>

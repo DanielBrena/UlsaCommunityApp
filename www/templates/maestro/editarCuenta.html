@@ -1,0 +1,40 @@
+<ion-view ng-form="form" view-title="Cuenta">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-disabled="form.$invalid"  ng-click="actualizarUsuario(usuario)">
+      Listo
+    </button>
+  </ion-nav-buttons>
+  <ion-content >
+    <div>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Usuario</span>
+          <input required ng-model="usuario.username"  type="text" placeholder="Usuario">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Correo electronico</span>
+          <input required type="email" ng-model="usuario.email"  placeholder="Correo electronico">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Contraseña</span>
+          <input  type="password" ng-model="usuario.password" placeholder="Contraseña">
+        </label>
+
+        <!-- <li class="item item-toggle">
+         Disponible
+         <label class="toggle toggle-calm">
+           <input type="checkbox" ng-model="usuario.active">
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+         </label>
+      </li> -->
+
+
+      </div>
+    </div >
+
+  </ion-content>
+</ion-view>
